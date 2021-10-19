@@ -34,6 +34,7 @@ public class FortuneTeller extends JPanel implements Runnable, MouseListener {
    	 // 2. Adjust the frameWidth and frameHeight variables to fit your image nicely (doesn’t need a new line of code)
      // 3. Complete the begin() method in the FortuneTellerRunner class
  	 // 4. add a mouse listener to the frame
+   	 frame.addMouseListener(this);
 
     }
 
@@ -44,19 +45,47 @@ public class FortuneTeller extends JPanel implements Runnable, MouseListener {
    	 int mouseX = e.getX();
    	 int mouseY = e.getY();
    	 // 5. Print the mouseX variable
-
+   	 System.out.println(mouseX +", " +mouseY);
    	 // 6. Add the mouseY variable to the previous line so that it prints out too (no new line)
    	 // 7. Adjust your secret location co-ordinates here:
-   	 int secretLocationX = 0;
-   	 int secretLocationY = 0;
+   	 int secretLocationX = 150;
+   	 int secretLocationY = 435;
    	 /** If the mouse co-ordinates and secret location are close, we'll let them ask a question. */
    	 if (areClose(mouseX, secretLocationX) && areClose(mouseY, secretLocationY)) {
    		 // 8. Find a spooky sound and put it in your _07_fortune_teller package (freesound.org)
-   		 // play("src/_07_fortune_teller/creepy-noise.wav");
+   		 play("src/_07_fortune_teller/creepy-noise.wav");
    		 // 9. Play the sound
          
    		 // 10. Insert your completed Magic 8 ball code here
+   		
+   			// 2. Make a variable that will hold a random number and put a random number into this variable using "new Random().nextInt(4)"
+   				int randNum=new Random().nextInt(4);
+   			// 3. Print out this variable
+   				System.out.println(randNum);
+   			// 4. Get the user to enter a question for the 8 ball
+   				String answer = JOptionPane.showInputDialog("Enter a question for the Magic 8 ball");
+   			// 5. If the random number is 0
+   				if(randNum==0) {
+   			// -- tell the user "Yes"
+   				JOptionPane.showMessageDialog(null, "yes");
+   				}
+   			// 6. If the random number is 1
+   				else if(randNum==1) {
+   					JOptionPane.showMessageDialog(null, "No");
+   				}
+   			// -- tell the user "No"
 
+   			// 7. If the random number is 2
+   				else if(randNum==2) {
+   			// -- tell the user "Maybe you should ask Google?"
+   				JOptionPane.showMessageDialog(null, "Maybe you should ask Google?");
+   				}
+   			// 8. If the random number is 3
+   				else {
+   					JOptionPane.showMessageDialog(null, "You can answer this one yourself");
+   				}
+   			// -- write your own answer
+   			
    	 }
 
     }
